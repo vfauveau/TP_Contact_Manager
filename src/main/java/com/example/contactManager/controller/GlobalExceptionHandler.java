@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
     public static final String DEFAULT_ERROR_VIEW = "userNotFound";
@@ -14,4 +15,12 @@ public class GlobalExceptionHandler {
         model.addAttribute("exception" , e);
         return DEFAULT_ERROR_VIEW;
     }
+
+    @ExceptionHandler (value = NullPointerException.class)
+    public String authError(Model model, Exception e){
+        model.addAttribute("exception" , e);
+        return DEFAULT_ERROR_VIEW;
+    }
+
 }
+

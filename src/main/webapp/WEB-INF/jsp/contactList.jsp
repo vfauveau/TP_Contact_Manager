@@ -21,7 +21,7 @@
 
     <a href="/contacts/add">Add a contact</a>
 
-    <form action="/contacts">
+    <form action="/contacts" method="get">
         <input type="search" name="search">
         <input type="submit">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

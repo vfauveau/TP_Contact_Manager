@@ -28,7 +28,7 @@ public class ContactController {
     /* récuperer l'utilisateur connecté -> chercher ses contacts -> addattribute -> les afficher */
 
     @GetMapping
-    public String filterContactListByName(Model model, Authentication authentication, @RequestParam(value = "name", required = false) String name) {
+    public String filterContactListByName(Model model, Authentication authentication, @RequestParam(value = "search", required = false) String name) {
 
         if (name != null) {
             List<Contact> contactList = contactService.findUserContactsByName(userService.getCurrentUser(authentication.getName()).getId(), name, name);
