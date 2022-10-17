@@ -16,7 +16,7 @@
 <body>
 <header style="margin-bottom: 130px">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark header p-3">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Contact Manager</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/user/">Contact Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

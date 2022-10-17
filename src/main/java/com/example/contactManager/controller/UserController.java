@@ -3,13 +3,13 @@ package com.example.contactManager.controller;
 import com.example.contactManager.repository.entity.user.User;
 import com.example.contactManager.repository.entity.user.UserDTO;
 import com.example.contactManager.service.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
@@ -24,7 +24,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/login")
+    @GetMapping({"/login", "/"})
     public String loginUser() {
         return "login";
     }
@@ -46,22 +46,22 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/{id}")
-    public String getUserProfile(@PathVariable("id") Long id, Model model) {
-        User user = userService.getUserById(id);
+    @GetMapping("/user/")
+    public String getUserProfile(Model model, Authentication authentication) {
+        User user = userService.getUserById(userService.getCurrentUser(authentication.getName()).getId());
         model.addAttribute("user", user);
         return "userProfile";
     }
 
-    @PostMapping("/user/edit/{id}")
-    public RedirectView postUserProfile(@PathVariable("id") Long id, User newUser) {
-        userService.editUser(id, newUser);
+    @PostMapping("/user/edit/")
+    public RedirectView postUserProfile(Authentication authentication, User newUser) {
+        userService.editUser(userService.getCurrentUser(authentication.getName()).getId(), newUser);
         return new RedirectView("/user/{id}");
     }
 
-    @GetMapping("/user/edit/{id}")
-    public String getUserEdit(@PathVariable Long id, Model model) {
-        User user = userService.getUserById(id);
+    @GetMapping("/user/edit/")
+    public String getUserEdit(Authentication authentication, Model model) {
+        User user = userService.getUserById((userService.getCurrentUser(authentication.getName()).getId()));
         model.addAttribute("user", user);
         return "editUser";
     }

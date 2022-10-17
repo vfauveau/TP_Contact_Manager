@@ -6,7 +6,7 @@
 
 <header >
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark header p-3">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Contact Manager</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/user/">Contact Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,9 +19,12 @@
                 <li class="nav-item active">
                     <a  class="nav-link" href="${pageContext.request.contextPath}/contacts">My contacts</a>
                 </li>
+                <li>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/user/${user.id}"></a>
+                </li>
             </ul>
-            <form:form method="post" action="/logout">
-                <button type="submit">
+            <form:form  method="post" action="/logout">
+                <button  class="nav-link bg-dark border-0 text-light" type="submit">
                     Logout
                 </button>
             </form:form>
