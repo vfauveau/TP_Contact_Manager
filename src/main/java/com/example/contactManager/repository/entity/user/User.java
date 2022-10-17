@@ -29,7 +29,7 @@ public class User {
     @Nullable
     private String pictureUrl;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     List<Contact> contactList;
 
     public void setId(Long id) {

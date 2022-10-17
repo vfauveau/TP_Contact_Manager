@@ -19,21 +19,45 @@
 <c:import url="header.jsp"/>
 
 <main class="container">
-    <h1>Register yourself !</h1>
+    <h1>Edit user infos</h1>
     <form class="mt-5 w-50" action="${pageContext.request.contextPath}/user/edit/${user.id}" method="post">
-
-        <input type="text" class="form-control" placeholder="First name" name="firstName">
-
-        <input type="text" class="form-control" placeholder="Last name" name="lastName">
-
-        <input type="email" class="form-control" placeholder="email" name="email">
-        <input type="password" class="form-control" placeholder="password" name="password">
-        <div class="row">
-            <div class="col">
-                <button type="submit">Submit</button>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="${user.firstName}" value="${user.firstName}" name="firstName">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="${user.lastName}" value="${user.lastName}" name="lastName">
             </div>
         </div>
-    </form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email" value="${user.email}" name="email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password" value="${user.password}" name="password">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="birthdate">Birthdate</label>
+                    <input type="date" name="birthdate" id="birthdate" value="${user.birthdate}">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="pictureUrl">Profile picture</label>
+                    <input type="text" class="form-control" id="pictureUrl" name="pictureUrl" value="${user.pictureUrl}">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="phone">Phone number</label>
+                    <input type="text" class="form-control" id="phone" name="phoneNumber" placeholder="${user.phoneNumber}" value="${user.phoneNumber}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit infos !</button>
+        </form>
 
 </main>
 </body>

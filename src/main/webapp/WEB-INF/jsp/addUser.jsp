@@ -32,10 +32,8 @@
             <div class="col">
                 <button type="submit">Submit</button>
             </div>
-
         </div>
     </form>
-
 </main>
 </body>
 </html>
