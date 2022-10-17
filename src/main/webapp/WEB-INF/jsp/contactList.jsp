@@ -47,6 +47,7 @@
                 <td>${contact.enterprise}</td>
                 <td>${contact.role}</td>
                 <td><a href="${pageContext.request.contextPath}/contacts/edit/${contact.id}">Edit contact</a></td>
+                <td><a href="${pageContext.request.contextPath}/contacts/delete/${contact.id}">Delete contact</a></td>
             </tr>
         </c:forEach>
         </tbody>

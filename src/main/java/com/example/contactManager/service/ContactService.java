@@ -64,4 +64,8 @@ public class ContactService {
     public Contact findContactById(Long id) {
         return this.contactRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
+
+    public void deleteContact(Long id) {
+        contactRepository.delete(findContactById(id));
+    }
 }
