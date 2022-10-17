@@ -20,8 +20,27 @@
     <title>Contact Manager | 404</title>
 </head>
 <body>
-<c:import url="header.jsp"/>
+<header >
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark header p-3">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/user/">Contact Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/login/">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 <div class="ag-page-404">
+    <h1 class="p-2" style="font-family: Roboto;font-size: 1rem">LA PAGE OU LA RESSOURCE QUE VOUS AVEZ ESSAYEZ D'ATTEINDRE N'EST PAS DISPONBILE. VEUILLEZ VOUS CONNECTER OU CREER UN COMPTE</h1>
     <div class="ag-toaster-wrap">
         <div class="ag-toaster">
             <div class="ag-toaster_back"></div>

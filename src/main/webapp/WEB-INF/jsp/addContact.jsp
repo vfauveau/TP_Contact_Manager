@@ -19,9 +19,8 @@
 <c:import url="header.jsp"/>
 
 <main class="container d-flex justify-content-center" style="margin-top: 130px">
-    <h1>Add a contact</h1>
     <form action="${pageContext.request.contextPath}/contacts/add" method="post" class="w-50">
-
+        <h1>Add a contact</h1>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputFirstName">First Name</label>
@@ -56,11 +55,11 @@
             <label for="role">Role</label>
             <input type="text" class="form-control" id="role" name="role">
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label for="Street">Street</label>
             <input type="text" class="form-control" id="Street" placeholder="1234 Main St" name="street">
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label for="streetNumber">Street number</label>
             <input type="text" class="form-control" id="streetNumber" placeholder="streetNumber" name="streetNumber">
         </div>

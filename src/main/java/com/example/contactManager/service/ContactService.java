@@ -8,6 +8,8 @@ import com.example.contactManager.repository.entity.user.User;
 import com.example.contactManager.repository.entity.user.UserRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ContactService {
 
@@ -79,6 +81,6 @@ public class ContactService {
         contactRepository.delete(findContactById(id));
     }
     public List<Contact> findUserContactsByName(Long id, String name1, String name2) {
-        return this.contactRepository.findContactsByUser_IdAndFirstNameOrLastNameContainingIgnoreCase(id, name1, name2);
+        return contactRepository.findContactsByUser_IdAndFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(id, name1, name2);
     }
 }
