@@ -20,7 +20,7 @@
 
 <main class="container d-flex justify-content-center" style="margin-top: 130px">
     <h1>Edit a contact</h1>
-    <form action="${pageContext.request.contextPath}/contacts/add" method="post" class="w-50">
+    <form action="${pageContext.request.contextPath}/contacts/edit/${contact.id}" method="post" class="w-50">
 
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputLastName">Last Name</label>
-                <input type="text" class="form-control" id="inputLastName" placeholder="${contact.lastName}"
+                <input type="text" class="form-control" id="inputLastName" name="lastName"
                        value="${contact.lastName}">
             </div>
         </div>
@@ -38,62 +38,62 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="${contact.email}"
+                <input type="email" class="form-control" id="inputEmail4" name="email"
                        value="${contact.email}">
             </div>
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Telephone</label>
-                <input type="tel" maxlength="10" class="form-control" id="Telephone" placeholder="${contact.telephone}"
+                <input type="tel" maxlength="10" class="form-control" id="Telephone"  name="telephone"
                        value="${contact.telephone}">
             </div>
             <div class="form-group col-md-6">
                 <label for="Birthdate">Birthdate</label>
-                <input type="date" class="form-control" id="Birthdate" placeholder="${contact.birthdate}"
+                <input type="date" class="form-control" id="Birthdate"
                        value="${contact.birthdate}">
             </div>
 
             <div class="form-group col-md-6">
                 <label for="enterprise">Enterprise</label>
-                <input type="text" class="form-control" id="enterprise" placeholder="enterprise" name="enterprise"
-                       placeholder="${contact.enterprise}" value="${contact.enterprise}">
+                <input type="text" class="form-control" id="enterprise" name="enterprise"
+                      value="${contact.enterprise}">
             </div>
         </div>
         <div class="form-group col-md-2">
             <label for="role">Role</label>
-            <input type="text" class="form-control" id="role" name="role" placeholder="${contact.role}"
+            <input type="text" class="form-control" id="role" name="role"
                    value="${contact.role}">
         </div>
         <div class="form-group">
             <label for="Street">Street</label>
             <input type="text" class="form-control" id="Street" placeholder="1234 Main St" name="street"
-                   placeholder="${contact.street}" value="${contact.street}">
+                   value="${contact.street}">
         </div>
         <div class="form-group">
             <label for="streetNumber">Street number</label>
             <input type="number" class="form-control" id="streetNumber" placeholder="streetNumber" name="streetNumber"
-                   placeholder="${contact.streetNumber}" value="${contact.streetNumber}">
+                   value="${contact.streetNumber}">
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="city">City</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder="${contact.city}"
+                <input type="text" class="form-control" id="city" name="city"
                        value="${contact.city}">
             </div>
             <div class="form-group col-md-6">
                 <label for="city">Zipcode</label>
-                <input type="text" class="form-control" id="zip" name="zipcode" placeholder="${contact.zipcode}"
+                <input type="text" class="form-control" id="zip" name="zipcode"
                        value="${contact.zipcode}">
             </div>
             <div class="form-group col-md-6">
                 <label for="Country">Country</label>
-                <input type="text" class="form-control" id="Country" name="country" placeholder="${contact.country}"
+                <input type="text" class="form-control" id="Country" name="country"
                        value="${contact.country}">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-2">
                 <label for="Notes">Notes</label>
-                <input type="text" class="form-control" id="Notes" name="notes" placeholder="${contact.notes}"
+                <input type="text" class="form-control" id="Notes" name="notes"
                        value="${contact.notes}">
             </div>
         </div>

@@ -21,6 +21,11 @@
 
     <a href="/contacts/add">Add a contact</a>
 
+    <form action="/contacts">
+        <input type="search" name="search">
+        <input type="submit">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -46,12 +51,27 @@
                 <td>${contact.streetNumber} ${contact.street}</td>
                 <td>${contact.enterprise}</td>
                 <td>${contact.role}</td>
-                <td><a href="${pageContext.request.contextPath}/contacts/edit/${contact.id}">Edit contact</a></td>
-                <td><a href="${pageContext.request.contextPath}/contacts/delete/${contact.id}">Delete contact</a></td>
+                <td>
+                    <form action="${pageContext.request.contextPath}/contacts/edit/${contact.id}" method="get">
+                        <button type="submit">Edit contact</button>
+
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
+                </td>
+
+                <td>
+                    <form action="${pageContext.request.contextPath}/contacts/delete/${contact.id}" method="post">
+                        <button type="submit">Delete contact</button>
+
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
+
+
 </main>
 </body>
 </html>

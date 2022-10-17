@@ -26,6 +26,7 @@ public class ContactDTO {
     private String city;
     private String zipcode;
 
+    private String country;
 
     public User getUser() {
         return user;
@@ -123,6 +124,13 @@ public class ContactDTO {
         this.adressInfos = adressInfos;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
     public String getCity() {
         return city;
@@ -139,4 +147,5 @@ public class ContactDTO {
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
+
 }

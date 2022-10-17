@@ -9,4 +9,5 @@ import java.util.List;
 public interface ContactRepository extends CrudRepository<Contact , Long> {
 
     List<Contact> findContactsByUser_Id (Long id);
+    List<Contact> findContactsByUser_IdAndFirstNameOrLastNameContainingIgnoreCase(Long user_id, String firstName, String lastName);
 }
