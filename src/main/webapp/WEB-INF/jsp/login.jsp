@@ -15,7 +15,7 @@
 </head>
 <body>
 <header style="margin-bottom: 130px">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark header p-3">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Contact Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,21 +36,23 @@
         </div>
     </nav>
 </header>
-<form action="${pageContext.request.contextPath}/login" method="post">
-
-    <h1>LOGIN</h1>
+<form class="form-group mx-auto w-50" action="${pageContext.request.contextPath}/login" method="post">
     <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required>
+        <p>Email for testing : admin@admin / password : admin</p>
+        <p>Email for testing : valentinfauveau28@gmail.com / password : 123456</p>
     </div>
-    <div>
+    <h1>LOGIN</h1>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control"id="email" type="email" name="email" required>
+    </div>
+    <div class="form-group">
         <label for="password">Password</label>
-        <input id="password" type="password" name="password" required>
+        <input class="form-control"id="password" type="password" name="password" required>
     </div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-    <button type="submit">aaaaa</button>
-
+    <button class="btn btn-primary"type="submit">Submit</button>
 </form>
+
 </body>
 </html>
