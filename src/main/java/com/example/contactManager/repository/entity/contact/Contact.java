@@ -33,6 +33,8 @@ public class Contact implements Serializable {
     private int streetNumber;
     private String adressInfos;
 
+    private String country;
+
     public User getUser() {
         return user;
     }
@@ -135,6 +137,14 @@ public class Contact implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCity() {

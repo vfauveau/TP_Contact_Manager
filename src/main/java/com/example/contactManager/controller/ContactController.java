@@ -8,10 +8,7 @@ import com.example.contactManager.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -22,6 +19,7 @@ public class ContactController {
 
     private ContactService contactService;
     private UserService userService;
+
     public ContactController(ContactService contactService, UserService userService) {
         this.contactService = contactService;
         this.userService = userService;
@@ -30,31 +28,44 @@ public class ContactController {
     /* récuperer l'utilisateur connecté -> chercher ses contacts -> addattribute -> les afficher */
 
     @GetMapping
-    public String getContactList(Model model, Authentication authentication ){
-        model.addAttribute("contacts", contactService.getAllContactsOfUser(userService.getCurrentUser(authentication.getName()).getId()));
+    public String filterContactListByName(Model model, Authentication authentication, @RequestParam(value = "name", required = false) String name) {
+
+        if (name != null) {
+            List<Contact> contactList = contactService.findUserContactsByName(userService.getCurrentUser(authentication.getName()).getId(), name, name);
+            model.addAttribute("contacts", contactList);
+        } else {
+            model.addAttribute("contacts", contactService.getAllContactsOfUser(userService.getCurrentUser(authentication.getName()).getId()));
+        }
         return "contactList";
     }
 
     @GetMapping("/add")
-    public String getContactPage(){
+    public String getContactPage() {
         return "addContact";
     }
 
     @PostMapping("/add")
-    public RedirectView postContactPage(ContactDTO contactDTO, Authentication authentication){
+    public RedirectView postContactPage(ContactDTO contactDTO, Authentication authentication) {
         contactService.createContact(contactDTO, userService.getCurrentUser(authentication.getName()).getId());
         return new RedirectView("/contacts/");
     }
 
     @GetMapping("/edit/{id}")
-    public String getContactEdit(@PathVariable("id") Long id){
+    public String getContactEdit(@PathVariable("id") Long id, Model model) {
         Contact contact = contactService.findContactById(id);
+        model.addAttribute("contact", contact);
         return "editContact";
     }
 
     @PostMapping("/edit/{id}")
-    public RedirectView postUserProfile(@PathVariable("id") Long id, Contact newContact) {
-        contactService.editContact(id, newContact);
+    public RedirectView postUserProfile(@PathVariable("id") Long id, ContactDTO updatedContact, Authentication authentication) {
+        contactService.editContact(id, updatedContact, userService.getCurrentUser(authentication.getName()).getId());
+        return new RedirectView("/contacts");
+    }
+
+    @PostMapping("/delete/{id}")
+    public RedirectView postUserProfile(@PathVariable("id") Long id) {
+        contactService.deleteContact(id);
         return new RedirectView("/contacts");
     }
 
