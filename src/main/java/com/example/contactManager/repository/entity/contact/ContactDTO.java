@@ -1,5 +1,7 @@
 package com.example.contactManager.repository.entity.contact;
 
+import com.example.contactManager.repository.entity.user.User;
+
 import javax.persistence.*;
 
 
@@ -9,7 +11,7 @@ public class ContactDTO {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Long userId;
+    private User user;
     private String firstName;
     private String lastName;
     private String email;
@@ -21,13 +23,16 @@ public class ContactDTO {
     private String street;
     private int streetNumber;
     private String adressInfos;
+    private String city;
+    private String zipcode;
 
-    public Long getUserId() {
-        return userId;
+
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getFirstName() {
@@ -119,4 +124,19 @@ public class ContactDTO {
     }
 
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 }

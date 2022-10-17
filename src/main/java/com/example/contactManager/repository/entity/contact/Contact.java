@@ -4,6 +4,7 @@ import com.example.contactManager.repository.entity.user.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /* famille */
 @Entity
@@ -26,6 +27,8 @@ public class Contact implements Serializable {
     private String enterprise;
     private String role;
     private String notes;
+    private String city;
+    private String zipcode;
     private String street;
     private int streetNumber;
     private String adressInfos;
@@ -134,6 +137,19 @@ public class Contact implements Serializable {
         return id;
     }
 
+    public String getCity() {
+        return city;
+    }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
 
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 }
