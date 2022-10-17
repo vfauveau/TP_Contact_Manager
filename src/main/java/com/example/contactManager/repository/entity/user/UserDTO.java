@@ -8,20 +8,15 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-public class User {
+public class UserDTO {
 
-    public User() {
+    public UserDTO() {
     }
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     private String password;
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    @Column(unique = true)
     private String email;
     @Nullable
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -31,14 +26,6 @@ public class User {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     List<Contact> contactList;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 
     public String getPassword() {
         return password;
