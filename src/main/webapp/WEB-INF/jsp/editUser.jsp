@@ -56,6 +56,7 @@
                     <input type="text" class="form-control" id="phone" name="phoneNumber" placeholder="${user.phoneNumber}" value="${user.phoneNumber}">
                 </div>
             </div>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button type="submit" class="btn btn-primary">Edit infos !</button>
         </form>
 

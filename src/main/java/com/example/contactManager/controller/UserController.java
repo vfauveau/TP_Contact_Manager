@@ -5,11 +5,14 @@ import com.example.contactManager.repository.entity.user.UserDTO;
 import com.example.contactManager.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -20,15 +23,27 @@ public class UserController {
         this.userService = userService;
     }
 
+
+    @GetMapping("/login")
+    public String loginUser() {
+        return "login";
+    }
+
+
     @GetMapping("/register")
     public String getRegistrationPage() {
         return "addUser";
     }
 
     @PostMapping("/register")
-    public RedirectView postRegistrationPage(UserDTO userDTO) {
-        userService.createUser(userDTO);
-        return new RedirectView("/login");
+    public String createUser(@Valid UserDTO userDTO, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("createUser", userDTO);
+            return "addUser";
+        } else {
+            userService.createUser(userDTO);
+            return "login";
+        }
     }
 
     @GetMapping("/user/{id}")
@@ -45,7 +60,7 @@ public class UserController {
     }
 
     @GetMapping("/user/edit/{id}")
-    public String getUserEdit (@PathVariable Long id , Model model){
+    public String getUserEdit(@PathVariable Long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "editUser";

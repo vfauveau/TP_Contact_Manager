@@ -4,6 +4,7 @@ import com.example.contactManager.exceptions.UserNotFoundException;
 import com.example.contactManager.repository.entity.user.User;
 import com.example.contactManager.repository.entity.user.UserDTO;
 import com.example.contactManager.repository.entity.user.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +22,9 @@ public class UserService {
         newUser.setFirstName(userDTO.getFirstName());
         newUser.setLastName(userDTO.getLastName());
         newUser.setEmail(userDTO.getEmail());
-        newUser.setPassword(userDTO.getPassword());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
+        newUser.setPassword(encodedPassword);
         this.userRepository.save(newUser);
     }
 
@@ -33,5 +36,9 @@ public class UserService {
         User user = this.userRepository.findById(id).get();
         user = editedUser;
         this.userRepository.save(user);
+    }
+
+    public User getCurrentUser(String email) {
+        return this.userRepository.findUserByEmail(email);
     }
 }

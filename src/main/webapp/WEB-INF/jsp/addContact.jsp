@@ -84,6 +84,7 @@
                 <input type="text" class="form-control" id="Notes" name="notes">
             </div>
         </div>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button type="submit" class="btn btn-primary">Add a contact</button>
     </form>
 </main>

@@ -14,5 +14,6 @@
 </head>
 <body>
 <c:import url="header.jsp"/>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </body>
 </html>
