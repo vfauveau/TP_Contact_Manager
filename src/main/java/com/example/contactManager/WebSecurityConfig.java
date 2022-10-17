@@ -43,7 +43,9 @@ public class WebSecurityConfig {
         http
                 .authorizeRequests()
                 .antMatchers("/register").permitAll()
-                //.antMatchers("/api/**").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/contacts/**").fullyAuthenticated()
+                .antMatchers("/contacts/edit/**").fullyAuthenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

@@ -40,7 +40,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Telephone</label>
-                <input type="number" class="form-control" id="Telephone" placeholder="Telephone" name="telephone">
+                <input type="tel" class="form-control" id="Telephone" placeholder="Telephone" name="telephone">
             </div>
             <div class="form-group col-md-6">
                 <label for="Birthdate">Birthdate</label>

@@ -1,5 +1,6 @@
 package com.example.contactManager.service;
 
+import com.example.contactManager.exceptions.UserNotFoundException;
 import com.example.contactManager.repository.entity.contact.Contact;
 import com.example.contactManager.repository.entity.contact.ContactDTO;
 import com.example.contactManager.repository.entity.contact.ContactRepository;
@@ -8,6 +9,7 @@ import com.example.contactManager.repository.entity.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -50,5 +52,16 @@ public class ContactService {
         contact.setZipcode(contact.getZipcode());
         contact.setUser(user);
         this.contactRepository.save(contact);
+    }
+
+    public void editContact(Long id, Contact newContact) {
+        Contact contact = this.contactRepository.findById(id).get();
+        contact = newContact;
+        this.contactRepository.save(contact);
+
+    }
+
+    public Contact findContactById(Long id) {
+        return this.contactRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 }

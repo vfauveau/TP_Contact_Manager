@@ -1,6 +1,7 @@
 package com.example.contactManager.service;
 
 import com.example.contactManager.exceptions.UserNotFoundException;
+import com.example.contactManager.repository.entity.contact.ContactDTO;
 import com.example.contactManager.repository.entity.user.User;
 import com.example.contactManager.repository.entity.user.UserDTO;
 import com.example.contactManager.repository.entity.user.UserRepository;
@@ -41,4 +42,5 @@ public class UserService {
     public User getCurrentUser(String email) {
         return this.userRepository.findUserByEmail(email);
     }
+
 }

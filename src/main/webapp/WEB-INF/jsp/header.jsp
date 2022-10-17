@@ -16,11 +16,8 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/register">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                <li class="nav-item active">
+                    <a  class="nav-link" href="${pageContext.request.contextPath}/contacts">My contacts</a>
                 </li>
             </ul>
             <form:form method="post" action="/logout">

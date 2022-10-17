@@ -18,6 +18,9 @@
 <body>
 <c:import url="header.jsp"/>
 <main class="container" style="margin-top: 130px">
+
+    <a href="/contacts/add">Add a contact</a>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -43,6 +46,7 @@
                 <td>${contact.streetNumber} ${contact.street}</td>
                 <td>${contact.enterprise}</td>
                 <td>${contact.role}</td>
+                <td><a href="${pageContext.request.contextPath}/contacts/edit/${contact.id}">Edit contact</a></td>
             </tr>
         </c:forEach>
         </tbody>
