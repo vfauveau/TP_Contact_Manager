@@ -80,7 +80,7 @@ public class ContactService {
     public void deleteContact(Long id) {
         contactRepository.delete(findContactById(id));
     }
-    public List<Contact> findUserContactsByName(Long id, String name1, String name2) {
-        return contactRepository.findContactsByUser_IdAndFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(id, name1, name2);
+    public List<Contact> findUserContactsByName(String name1, String name2) {
+        return contactRepository.findContactsByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name1, name2);
     }
 }

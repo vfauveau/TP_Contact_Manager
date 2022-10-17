@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/contacts")
@@ -31,8 +33,10 @@ public class ContactController {
     public String filterContactListByName(Model model, Authentication authentication, @RequestParam(value = "search", required = false) String name) {
 
         if (name != null) {
-            List<Contact> contactList = contactService.findUserContactsByName(userService.getCurrentUser(authentication.getName()).getId(), name, name);
-            model.addAttribute("contacts", contactList);
+            List<Contact> contactList = contactService.findUserContactsByName(name, name);
+            List<Contact> resultList;
+            resultList =contactList.stream().filter(contact -> contact.getUser().getId().equals(userService.getCurrentUser(authentication.getName()).getId())).collect(Collectors.toList());
+            model.addAttribute("contacts", resultList);
         } else {
             model.addAttribute("contacts", contactService.getAllContactsOfUser(userService.getCurrentUser(authentication.getName()).getId()));
         }

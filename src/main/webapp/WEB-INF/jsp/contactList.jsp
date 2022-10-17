@@ -19,7 +19,6 @@
 <c:import url="header.jsp"/>
 <main class="container" style="margin-top: 130px">
 
-    <a class="btn btn-success mb-2" href="/contacts/add">Add a contact</a>
 
     <form class="d-flex my-3" action="/contacts" method="get">
         Super barre de recherche par nom/prénom :
@@ -54,7 +53,7 @@
                 <td>${contact.role}</td>
                 <td>
                     <form action="${pageContext.request.contextPath}/contacts/edit/${contact.id}" method="get">
-                        <button class="btn btn-dark" type="submit">Edit contact</button>
+                        <button class="btn btn-dark" type="submit">Show contact</button>
 
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
@@ -71,7 +70,7 @@
         </c:forEach>
         </tbody>
     </table>
-
+    <a class="btn btn-success mb-2" href="/contacts/add">Add a contact</a>
 
 </main>
 </body>

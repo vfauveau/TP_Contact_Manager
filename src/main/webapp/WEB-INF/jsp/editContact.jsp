@@ -18,61 +18,57 @@
 <body>
 <c:import url="header.jsp"/>
 
-<main style="margin-top: 130px">
-    <form  class="container-fluid d-flex justify-content-center flex-column align-items-center" action="${pageContext.request.contextPath}/contacts/edit/${contact.id}" method="post">
+<main class="container-fluid" style="margin-top: 130px">
+    <form class="container-fluid d-flex justify-content-center flex-column align-items-center"
+          action="${pageContext.request.contextPath}/contacts/edit/${contact.id}" method="post">
         <h1>Edit a contact</h1>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputFirstName">First Name</label>
-                <input type="text" class="form-control" id="inputFirstName" placeholder="${contact.firstName}"
-                       value="${contact.firstName}" name="firstName">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputLastName">Last Name</label>
-                <input type="text" class="form-control" id="inputLastName" name="lastName"
-                       value="${contact.lastName}">
-            </div>
+        <div class="form-group col-md-6">
+            <label for="inputFirstName">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName" placeholder="${contact.firstName}"
+                   value="${contact.firstName}" name="firstName">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" name="lastName"
+                   value="${contact.lastName}">
         </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" name="email"
-                       value="${contact.email}">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Telephone</label>
-                <input type="tel" maxlength="10" class="form-control" id="Telephone" name="telephone"
-                       value="${contact.telephone}">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="Birthdate">Birthdate</label>
-                <input type="date" class="form-control" id="Birthdate"
-                       value="${contact.birthdate}">
-            </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" name="email"
+                   value="${contact.email}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Telephone</label>
+            <input type="tel" maxlength="10" class="form-control" id="Telephone" name="telephone"
+                   value="${contact.telephone}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Birthdate">Birthdate</label>
+            <input type="date" class="form-control" id="Birthdate"
+                   value="${contact.birthdate}">
 
             <div class="form-group col-md-6">
                 <label for="enterprise">Enterprise</label>
                 <input type="text" class="form-control" id="enterprise" name="enterprise"
                        value="${contact.enterprise}">
             </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="role">Role</label>
-            <input type="text" class="form-control" id="role" name="role"
-                   value="${contact.role}">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="Street">Street</label>
-            <input type="text" class="form-control" id="Street" placeholder="1234 Main St" name="street"
-                   value="${contact.street}">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="streetNumber">Street number</label>
-            <input type="number" class="form-control" id="streetNumber" placeholder="streetNumber" name="streetNumber"
-                   value="${contact.streetNumber}">
-        </div>
-        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="role">Role</label>
+                <input type="text" class="form-control" id="role" name="role"
+                       value="${contact.role}">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="Street">Street</label>
+                <input type="text" class="form-control" id="Street" placeholder="1234 Main St" name="street"
+                       value="${contact.street}">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="streetNumber">Street number</label>
+                <input type="number" class="form-control" id="streetNumber" placeholder="streetNumber"
+                       name="streetNumber"
+                       value="${contact.streetNumber}">
+            </div>
             <div class="form-group col-md-6">
                 <label for="city">City</label>
                 <input type="text" class="form-control" id="city" name="city"
@@ -87,17 +83,17 @@
                 <label for="Country">Country</label>
                 <input type="text" class="form-control" id="Country" name="country"
                        value="${contact.country}">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="Notes">Notes</label>
-                <input type="text" class="form-control" id="Notes" name="notes"
-                       value="${contact.notes}">
+
+                <div class="form-group col-md-6">
+                    <label for="Notes">Notes</label>
+                    <input type="text" class="form-control" id="Notes" name="notes"
+                           value="${contact.notes}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add a contact</button>
             </div>
         </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <button type="submit" class="btn btn-primary">Add a contact</button>
     </form>
 </main>
 </body>
