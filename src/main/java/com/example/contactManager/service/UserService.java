@@ -1,5 +1,6 @@
 package com.example.contactManager.service;
 
+import com.example.contactManager.exceptions.UserNotFoundException;
 import com.example.contactManager.repository.entity.user.User;
 import com.example.contactManager.repository.entity.user.UserDTO;
 import com.example.contactManager.repository.entity.user.UserRepository;
@@ -24,4 +25,13 @@ public class UserService {
         this.userRepository.save(newUser);
     }
 
+    public User getUserById(long id) {
+        return this.userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+    }
+
+    public void editUser(Long id, User editedUser) {
+        User user = this.userRepository.findById(id).get();
+        user = editedUser;
+        this.userRepository.save(user);
+    }
 }
