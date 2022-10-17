@@ -5,11 +5,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     public User() {
     }
@@ -29,7 +30,7 @@ public class User {
     @Nullable
     private String pictureUrl;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     List<Contact> contactList;
 
     public void setId(Long id) {

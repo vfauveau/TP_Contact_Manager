@@ -1,25 +1,17 @@
 package com.example.contactManager.repository.entity.contact;
 
-import com.example.contactManager.repository.entity.user.User;
-
 import javax.persistence.*;
-import java.io.Serializable;
-
-/* famille */
-@Entity
-public class Contact implements Serializable {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ContactDTO {
 
+    public ContactDTO() {
+    }
 
-    @ManyToOne
-    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Long userId;
     private String firstName;
     private String lastName;
-
     private String email;
     private String telephone;
     private String birthdate;
@@ -30,12 +22,12 @@ public class Contact implements Serializable {
     private int streetNumber;
     private String adressInfos;
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -125,15 +117,6 @@ public class Contact implements Serializable {
     public void setAdressInfos(String adressInfos) {
         this.adressInfos = adressInfos;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
 
 
 }
