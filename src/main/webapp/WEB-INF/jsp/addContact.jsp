@@ -18,7 +18,7 @@
 <body>
 <c:import url="header.jsp"/>
 
-<main class="container d-flex justify-content-center mt-5 ">
+<main class="container d-flex justify-content-center" style="margin-top: 130px">
     <h1>Add a contact</h1>
     <form action="${pageContext.request.contextPath}/contacts/add" method="post" class="w-50">
 
@@ -37,6 +37,10 @@
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Email</label>
                 <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Telephone</label>
+                <input type="number" class="form-control" id="Telephone" placeholder="Telephone" name="telephone">
             </div>
             <div class="form-group col-md-6">
                 <label for="Birthdate">Birthdate</label>
